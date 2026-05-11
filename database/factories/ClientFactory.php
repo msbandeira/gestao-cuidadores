@@ -1,0 +1,35 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Client;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class ClientFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Client::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'full_name' => $this->faker->name,
+            'phone' => $this->faker->phoneNumber,
+            'email' => $this->faker->unique()->safeEmail,
+            'cpf' => $this->faker->unique()->cpf(false),
+            'address' => $this->faker->streetAddress,
+            'neighborhood' => $this->faker->city,
+            'city' => $this->faker->city,
+            'state' => $this->faker->stateAbbr,
+        ];
+    }
+}
